@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ~
 
 printf "\n\033[0;36mInstalling zsh\033[0;37m\n"
 sudo apt-get install zsh
