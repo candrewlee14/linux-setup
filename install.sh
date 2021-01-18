@@ -1,4 +1,8 @@
 #!/bin/bash
+
+SCRIPT=`realpath $0`
+SCRIPTPATH=`dirname $SCRIPT`
+
 cd ~
 
 printf "\n\033[0;36mInstalling zsh\033[0;37m\n"
@@ -31,6 +35,6 @@ printf "\n\033[0;36mInstalling powerlevel10k theme\033[37m\n\n"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 printf "\n\033[0;36mUpdating .zshrc\033[37m\n\n"
-cp ./zshrc ~/.zshrc
+cp $SCRIPTPATH/zshrc ~/.zshrc
 
 zsh
