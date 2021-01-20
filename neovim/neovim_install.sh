@@ -15,5 +15,5 @@ printf '\n\033[0;36mInstalling Plugin Manager and Plugins\033[0;37m\n'
 nvim --headless +"PlugInstall" +qall
 nvim --headless +"CocInstall -sync coc-json coc-tsserver coc-sh coc-prisma coc-prettier coc-css coc-explorer coc-python" +qall
 
-echo '{"coc.preferences.formatOnSaveFiletypes": ["css", "html", "markdown", "json", "javascript", "typescript", "python", "typescriptreact"],"explorer.icon.enableNerdfont": true}' > ~/.config/nvim/coc-settings.json
+echo '{"coc.preferences.formatOnSaveFiletypes": ["css", "html", "markdown", "json", "javascript", "typescript", "python", "typescriptreact"],"explorer.icon.enableNerdfont": true, "prettier.tabWidth": 4}' > ~/.config/nvim/coc-settings.json
 printf '\n\033[0;36mIgnore the PlugInstall errors. \nNeovim Installation Complete\033[0;37m\n'
