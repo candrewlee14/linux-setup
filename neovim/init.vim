@@ -1,11 +1,42 @@
 call plug#begin()
+Plug 'plasticboy/vim-markdown'
 Plug 'mhartington/oceanic-next'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'pantharshit00/vim-prisma'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 call plug#end()
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1 
+let g:airline_powerline_fonts = 1
+let g:airline_theme='tomorrow'
+let g:airline_solarized_bg='dark'
+let g:airline#extensions#hunks#enabled=1
+let g:airline#extensions#branch#enabled=1
+
+" Set leader to comma
+let mapleader=","
+" Quick edit init.vim
+nnoremap <Leader>v :n $MYVIMRC<cr>
+
+
+" Reloads vimrc after saving but keep cursor position
+if !exists('*ReloadVimrc')
+   fun! ReloadVimrc()
+       let save_cursor = getcurpos()
+       source $MYVIMRC
+       call setpos('.', save_cursor)
+   endfun
+endif
+autocmd! BufWritePost $MYVIMRC call ReloadVimrc()
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
@@ -17,7 +48,7 @@ endif
 
 " Theme
 syntax enable
-colorscheme OceanicNext
+colorscheme gruvbox
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -85,9 +116,13 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gx <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Navigate buffers like tabs (gt & gT)
+nnoremap <silent> gb :bnext<CR>
+nnoremap <silent> gB :bprevious<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>

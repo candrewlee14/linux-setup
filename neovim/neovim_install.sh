@@ -3,6 +3,10 @@ sudo apt install neovim -y
 pip3 install neovim
 pip3 install pynvim --upgrade 
 
+sudo apt update
+sudo apt install nodejs
+sudo apt install npm
+
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 nvim +"PlugInstall" +qall
