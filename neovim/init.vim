@@ -12,8 +12,16 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'pantharshit00/vim-prisma'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'skywind3000/asyncrun.vim'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
+let g:asyncrun_open = 8
+let g:asyncrun_status = ''
+
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+
+let g:python3_host_prog = '~/.miniconda3/bin/python3'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1 
 let g:airline_powerline_fonts = 1
@@ -21,6 +29,7 @@ let g:airline_theme='tomorrow'
 let g:airline_solarized_bg='dark'
 let g:airline#extensions#hunks#enabled=1
 let g:airline#extensions#branch#enabled=1
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 
 " Set leader to comma
 let mapleader=","

@@ -20,6 +20,7 @@ A repo with resources to quickly setup Debian/Ubuntu Linux the way I like :)
     -   vim-signify
     -   vim-airline
         -   vim-airline-themes
+    - asyncrun.vim
 
 ## Preinstalled Themes
 

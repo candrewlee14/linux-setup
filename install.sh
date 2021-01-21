@@ -37,10 +37,19 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 printf "\n\033[0;36mUpdating .zshrc\033[37m\n\n"
 cp $SCRIPTPATH/zshrc ~/.zshrc
 
+
+# install miniconda
+read -p "Install miniconda (y/n)?" -n 1 choice
+case "$choice" in 
+  y|Y ) echo "Installing Miniconda..." && cd miniconda && sh ./miniconda_install.sh && cd ../;;
+  n|N ) echo "Ignored Miniconda.";;
+  * ) echo "Invalid input. Ignored Miniconda.";;
+esac
+
 # install neovim
 read -p "Install neovim (y/n)?" -n 1 choice
 case "$choice" in 
-  y|Y ) echo "Installing Neovim..." && cd neovim && sh ./neovim/neovim_install.sh && cd ../;;
+  y|Y ) echo "Installing Neovim..." && cd neovim && sh ./neovim/neovim_install.sh && sh ./neovim/neovim_install.sh && cd ../;;
   n|N ) echo "Ignored Neovim.";;
   * ) echo "Invalid input. Ignored Neovim.";;
 esac
