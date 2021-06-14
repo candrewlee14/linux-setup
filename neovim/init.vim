@@ -1,5 +1,9 @@
+set nocompatible
+
 call plug#begin()
-Plug 'plasticboy/vim-markdown'
+Plug 'vim-test/vim-test'
+Plug 'tpope/vim-commentary'
+Plug 'sheerun/vim-polyglot'
 Plug 'mhartington/oceanic-next'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -7,14 +11,22 @@ Plug 'mhinz/vim-signify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
-Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'pantharshit00/vim-prisma'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'skywind3000/asyncrun.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
+
+map <C-p> :Files<CR>
+
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_template_highlight = 1
 
 let g:asyncrun_open = 8
 let g:asyncrun_status = ''
@@ -36,6 +48,13 @@ let mapleader=","
 " Quick edit init.vim
 nnoremap <Leader>v :n $MYVIMRC<cr>
 
+" For vim-test: these Ctrl mappings work well when Caps Lock is mapped to Ctrl
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+let test#strategy = "asyncrun"
 
 " Reloads vimrc after saving but keep cursor position
 if !exists('*ReloadVimrc')
@@ -234,3 +253,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 nmap <space>e :CocCommand explorer<CR>
+
+" Set termdebug
+let g:termdebug_wide=1
